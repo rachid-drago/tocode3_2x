@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost/soc/tocode3_2/WS_TD/destination_server.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="destination" targetNamespace="http://localhost/soc/tocode3_2/WS_TD/destination_server.php">
+  <types>
+    <xsd:schema targetNamespace="http://localhost/soc/tocode3_2/WS_TD/destination_server.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="destinationPort">
+    <operation name="getDestination">
+      <input message="tns:getDestinationIn"/>
+    </operation>
+  </portType>
+  <binding name="destinationBinding" type="tns:destinationPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getDestination">
+      <soap:operation soapAction="http://localhost/soc/tocode3_2/WS_TD/destination_server.php#getDestination"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/soc/tocode3_2/WS_TD/destination_server.php"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost/soc/tocode3_2/WS_TD/destination_server.php"/>
+      </output>
+    </operation>
+  </binding>
+  <message name="getDestinationIn">
+    <part name="id" type="xsd:anyType"/>
+  </message>
+  <service name="destinationService">
+    <port name="destinationPort" binding="tns:destinationBinding">
+      <soap:address location="http://localhost/soc/tocode3_2/WS_TD/destination_server.php"/>
+    </port>
+  </service>
+</definitions>
